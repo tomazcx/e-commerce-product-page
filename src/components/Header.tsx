@@ -11,8 +11,6 @@ import { Sidebar } from './Sidebar'
 interface HeaderInterface {
     modal: boolean;
     menu: boolean;
-    product: number;
-    productFun(num: number): void;
     menuFun(value: boolean): void;
 }
 
