@@ -52,7 +52,7 @@ export const Header = (props: HeaderInterface) => {
                     </div>
                 </div>
 
-                {cartComponent ? <Cart product={props.product} productFun={props.productFun} /> : <></>}
+                {cartComponent ? <Cart /> : <></>}
 
             </header>
         </>

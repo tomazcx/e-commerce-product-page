@@ -8,7 +8,6 @@ export const App = () => {
   const [modal, setModal] = useState(false)
   const [menu, setMenu] = useState(false)
   const [imageModalDisplay, setImage] = useState(0)
-  const [productCar, setProduct] = useState(0)
 
   return (
     <>
@@ -16,7 +15,7 @@ export const App = () => {
       <div className="flex flex-col md:gap-12 items-center">
         {modal ? <ModalProduct closeFun={setModal} img={imageModalDisplay} /> : <></>}
         <QuantityContextProvider>
-          <Header modal={modal} menu={menu} menuFun={setMenu} product={productCar} productFun={setProduct} />
+          <Header modal={modal} menu={menu} menuFun={setMenu}  />
           <Main modalFun={setModal} menu={menu} modal={modal} imageFun={setImage} />
         </QuantityContextProvider>
 
