@@ -107,8 +107,8 @@ export const Main = (props: MainInterface) => {
 
                 </div>
             </div>
-            <div className='flex md:hidden items-center justify-between  z-10'>
-                <div className='hover:bg-gray-200 transition-colors h-[40px] w-[40px] rounded-full cursor-pointer bg-white shadow-2xl flex justify-center items-center relative left-4 bottom-60'>
+            <div className='flex md:hidden items-center justify-between '>
+                <div className='hover:bg-gray-200 transition-colors z-10 h-[40px] w-[40px] rounded-full cursor-pointer bg-white shadow-2xl flex justify-center items-center relative left-4 bottom-60'>
                     <img src={previous} width={10} alt="Previous icon"
                         onClick={() => {
                             let num = imageNum
@@ -123,7 +123,7 @@ export const Main = (props: MainInterface) => {
                     />
                 </div>
 
-                <div className='hover:bg-gray-200 transition-colors h-[40px] w-[40px] rounded-full cursor-pointer bg-white shadow-2xl flex justify-center items-center relative right-4 bottom-60'>
+                <div className='hover:bg-gray-200 transition-colors z-10 h-[40px] w-[40px] rounded-full cursor-pointer bg-white shadow-2xl flex justify-center items-center relative right-4 bottom-60'>
                     <img
                         onClick={() => {
                             let num = imageNum

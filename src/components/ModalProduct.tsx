@@ -44,7 +44,7 @@ export const ModalProduct = (props: ModalInterface) => {
     }, [])
 
     return (
-        <div className='flex flex-col items-center absolute z-10 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+        <div className='flex flex-col items-center absolute z-30 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2'>
             <img src={close} alt="Close icon" onClick={() => props.closeFun(false)} className='relative left-1/2 cursor-pointer' />
             <div className='flex items-center'>
                 <div

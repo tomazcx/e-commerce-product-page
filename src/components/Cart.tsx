@@ -8,7 +8,7 @@ interface CartInterface{
 
 export const Cart = (props: CartInterface) =>{
     return(
-        <div className="drop-shadow-2xl absolute top-20 right-1/2 transform translate-x-1/2 md:translate-x-0 md:right-[5%]  w-11/12 max-w-[400px]  gap-4 rounded-lg flex flex-col bg-gray-50 p-6 ">
+        <div className="drop-shadow-2xl absolute top-20 right-1/2 transform translate-x-1/2 md:translate-x-0 md:right-[5%]  z-30 w-11/12 max-w-[400px]  gap-4 rounded-lg flex flex-col bg-gray-50 p-6 ">
             <span className="font-bold">Cart</span>
             <hr className="w-full" />
 
