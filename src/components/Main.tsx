@@ -9,22 +9,28 @@ import imageThumbnail from '../assets/image-product-1-thumbnail.jpg'
 import imageThumbnail2 from '../assets/image-product-2-thumbnail.jpg'
 import imageThumbnail3 from '../assets/image-product-3-thumbnail.jpg'
 import imageThumbnail4 from '../assets/image-product-4-thumbnail.jpg'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { ModalProduct } from './ModalProduct'
 import classNames from 'classnames'
 import next from '../assets/icon-next.svg'
 import previous from '../assets/icon-previous.svg'
+import React from 'react'
+import { QuantityContext } from '../providers/quantity'
 
 interface MainInterface {
     modal: boolean;
     menu: boolean;
     modalFun(value: boolean): void;
     imageFun(value: number): void;
-    productFun(value: any): void;
+}
+
+interface ContextInterface{
+    quantity:number;
+    setQuantity (num:any):void;
 }
 
 export const Main = (props: MainInterface) => {
-    const [quantity, setQuantity] = useState(0)
+    let {quantity, setQuantity} = useContext<ContextInterface>(QuantityContext)
     const [modal, setModal] = useState(false)
 
     const [imageDisplay, setImage] = useState(productImage)
@@ -49,7 +55,7 @@ export const Main = (props: MainInterface) => {
 
     const decreaseQuantity = () => {
         if (quantity > 0) {
-            setQuantity(prevState => prevState -= 1)
+            setQuantity((prevState:any) => prevState-=1)
         }
     }
 
@@ -160,13 +166,13 @@ export const Main = (props: MainInterface) => {
 
                         <span className='font-bold'>{quantity}</span>
 
-                        <div className='h-full flex items-center justify-center cursor-pointer' onClick={() => setQuantity(prevState => prevState += 1)}>
+                        <div className='h-full flex items-center justify-center cursor-pointer' onClick={() => setQuantity((prevState:any) => prevState += 1)}>
                             <img src={plus} alt="Plus icon" className='cursor-pointer' />
                         </div>
 
                     </div>
                     <button
-                        onClick={() => props.productFun((prevState: number) => prevState + quantity)}
+                        onClick={() => setQuantity(quantity+=1)}
                         className='rounded-md w-full md:w-7/12 box-border font-bold text-sm gap-2 bg-orange-400 text-white flex items-center justify-center px-8 py-4 hover:opacity-80 hover:drop-shadow-lg transition-all'
                     >
                         <img src={cart} alt="cart icon" width={20} className='filter-cart' />

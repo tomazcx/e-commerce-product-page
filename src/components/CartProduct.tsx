@@ -1,12 +1,15 @@
 import img from '../assets/image-product-1-thumbnail.jpg'
 import trash from '../assets/icon-delete.svg'
+import { useContext } from 'react';
+import { QuantityContext } from '../providers/quantity';
 
-interface ProductInterface {
+interface ContextInterface {
     quantity: number;
-    productFun(num: number): void;
+    setQuantity(num: any): void;
 }
 
-export const CartProduct = (props: ProductInterface) => {
+export const CartProduct = () => {
+    let { quantity, setQuantity } = useContext<ContextInterface>(QuantityContext)
     const price = 125
 
     return (
@@ -15,11 +18,11 @@ export const CartProduct = (props: ProductInterface) => {
                 <img src={img} alt="Product" width={50} className="rounded-lg" />
                 <div className='flex flex-col'>
                     <span>Fall Limited Edition Sneakers</span>
-                    <span>${price} x {props.quantity} <span className='font-bold'>${price * props.quantity}.00</span> </span>
+                    <span>${price} x {quantity} <span className='font-bold'>${price * quantity}.00</span> </span>
                 </div>
                 <img src={trash} 
                 onClick={() => {
-                    props.productFun(0)
+                    setQuantity(0)
                 }}
                 alt="Trash icon" 
                 className='cursor-pointer' />

@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Header } from "./components/Header"
 import { Main } from "./components/Main"
 import { ModalProduct } from "./components/ModalProduct"
+import { QuantityContextProvider } from "./providers/quantity"
 
 export const App = () => {
   const [modal, setModal] = useState(false)
@@ -11,11 +12,14 @@ export const App = () => {
 
   return (
     <>
-      
+
       <div className="flex flex-col md:gap-12 items-center">
         {modal ? <ModalProduct closeFun={setModal} img={imageModalDisplay} /> : <></>}
-        <Header modal={modal} menu={menu} menuFun={setMenu} product={productCar} productFun={setProduct} />
-        <Main modalFun={setModal} menu={menu} modal={modal} imageFun={setImage} productFun={setProduct} />
+        <QuantityContextProvider>
+          <Header modal={modal} menu={menu} menuFun={setMenu} product={productCar} productFun={setProduct} />
+          <Main modalFun={setModal} menu={menu} modal={modal} imageFun={setImage} />
+        </QuantityContextProvider>
+
       </div>
     </>
 
