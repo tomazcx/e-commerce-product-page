@@ -26,12 +26,13 @@ interface MainInterface {
 
 interface ContextInterface{
     quantity:number;
-    setQuantity (num:any):void;
+    setQuantity (num:number):void;
 }
 
 export const Main = (props: MainInterface) => {
     let {quantity, setQuantity} = useContext<ContextInterface>(QuantityContext)
     const [modal, setModal] = useState(false)
+    const [productNum, setProductNum] = useState(quantity)
 
     const [imageDisplay, setImage] = useState(productImage)
     const [imageNum, setNum] = useState(0)
@@ -54,10 +55,15 @@ export const Main = (props: MainInterface) => {
     }
 
     const decreaseQuantity = () => {
-        if (quantity > 0) {
-            setQuantity((prevState:any) => prevState-=1)
+        let num = productNum
+        if (productNum > 0) {
+            num-=1
+            setProductNum(num)
         }
     }
+
+
+
 
     return (
         <main className={classNames("flex flex-col md:grid md:grid-cols-2 md:gap-16 w-full max-w-[800px] mb-24", {
@@ -164,15 +170,15 @@ export const Main = (props: MainInterface) => {
                             <img src={minus} alt="Minus icon" className='cursor-pointer' />
                         </div>
 
-                        <span className='font-bold'>{quantity}</span>
+                        <span className='font-bold'>{productNum}</span>
 
-                        <div className='h-full flex items-center justify-center cursor-pointer' onClick={() => setQuantity((prevState:any) => prevState += 1)}>
+                        <div className='h-full flex items-center justify-center cursor-pointer' onClick={() => setProductNum(prevState => prevState+=1)}>
                             <img src={plus} alt="Plus icon" className='cursor-pointer' />
                         </div>
 
                     </div>
                     <button
-                        onClick={() => setQuantity(quantity+=1)}
+                        onClick={() => setQuantity(productNum)}
                         className='rounded-md w-full md:w-7/12 box-border font-bold text-sm gap-2 bg-orange-400 text-white flex items-center justify-center px-8 py-4 hover:opacity-80 hover:drop-shadow-lg transition-all'
                     >
                         <img src={cart} alt="cart icon" width={20} className='filter-cart' />
